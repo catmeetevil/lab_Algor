@@ -1,0 +1,52 @@
+package stringcase;
+
+import java.util.Scanner;
+
+class Main {
+
+    public static void main(String[] args) {
+
+
+        Scanner sc = new Scanner(System.in);
+        Scanner ss = new Scanner(System.in);
+        int count = sc.nextInt();
+        String[] array = new String[count];
+        boolean swap_string = false;
+        String temp;
+        int w = array.length;
+        int no_sub = 0;
+
+        for(int i=0;i<count;i++){
+            array[i] = ss.nextLine();
+        }
+
+        while(!swap_string){
+            swap_string = true;
+            for (int i=0;i < w-1;i++){
+                if(array[i].length() > array[i+1].length()){
+                    temp = array[i];
+                    array[i] = array[i+1];
+                    array[i+1] = temp;
+                    swap_string = false;
+                }
+            }
+        }
+        for (int i=0;i<w-1;i++){
+            if(array[i].contains(array[i+1]) || array[i+1].contains(array[i])){
+                no_sub = 0;
+            }
+            else {
+                no_sub = 1;
+            }
+        }
+        if(no_sub==0){
+            System.out.println("YES");
+            for(int s=0;s<w;s++){
+                System.out.println(array[s]);
+            }
+        }
+        else {
+            System.out.println("NO");
+        }
+    }
+}
