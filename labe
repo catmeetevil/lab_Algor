@@ -1,0 +1,54 @@
+package lab;
+
+import java.util.Scanner;
+
+public class equlab {
+
+    public static boolean reword(String A,String B){
+        if(A.length() == 1 && B.length() == 1){
+            System.out.println(A + " " + B);
+
+            if(A == B){
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        else {
+            int al = A.length();
+            int bl = B.length();
+            String A1 = A.substring(0,A.length()/2);
+            String A2 = A.substring(A.length()/2,al);
+            String B1 = B.substring(0,B.length()/2);
+            String B2 = B.substring(B.length()/2,bl);
+            System.out.println(A1 + " " + A2 + " " + B1 + " " + B2);
+
+            if(reword(A1, B1) && reword(A2, B2)){
+                return true;
+            }
+            else if(reword(A1,B2) && reword(A2,B1)){
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        String a = sc.nextLine();
+        String b = sc.nextLine();
+
+
+        if(reword(a,b)){
+            System.out.print("YES");
+        }
+        else{
+            System.out.print("NO");
+        }
+    }
+}
