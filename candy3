@@ -1,0 +1,85 @@
+package lab;
+
+import java.util.Scanner;
+
+public class candy4 {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Scanner ss = new Scanner(System.in);
+        int num = sc.nextInt();
+        String w = ss.nextLine();
+        String[] array = new String[num];
+        int count = 0;
+        if (w.length() == num) {
+            for (int x = 0; x < w.length(); x++) {
+                array[x] = String.valueOf(w.charAt(x));
+            }
+            if (w.length() > 3){
+                for (int i = 0; i < w.length()-1; i++) {
+                    if (i < w.length() - 2) {
+                        if (array[i].equals(array[i + 1])) {
+                            if (array[i].equals("R")) {
+                                if (array[i + 2].equals("G")) {
+                                    array[i + 1] = "B";;
+                                } else {
+                                    array[i + 1] = "G";
+                                }
+                                count++;
+                            }
+                            else if (array[i].equals("B")) {
+                                if (array[i + 2].equals("R")) {
+                                    array[i + 1] = "G";
+                                } else {
+                                    array[i + 1] = "R"; }
+                                count++;
+                            }
+                            else if (array[i].equals("G")) {
+                                if (array[i + 2].equals("B")) {
+                                    array[i + 1] = "R";
+                                } else {
+                                    array[i + 1] = "B";
+                                }
+                                count++;
+                            }
+                        }
+                    }
+                    else {
+                        if (array[i].equals("G")){
+                            if (array[i+1].equals("G")) {
+                                array[i+1] = "B";count++; }
+                        }
+                        else if (array[i].equals("B")){
+                            if (array[i + 1].equals("B")) {
+                                array[i + 1] = "R"; count++;}
+                        }
+                        else if (array[i].equals("R")){
+                            if (array[i + 1].equals("R")) {
+                                array[i + 1] = "G"; count++;}
+                        }
+                    }
+                }
+            }
+            else {
+                for(int s=0;s < w.length()-1;s++){
+                    if(array[s].equals(array[s+1])){
+                        if (array[s].equals("R")){
+                            array[s+1] = "G";count++;
+                        }
+                        else if (array[s].equals("B")){
+                            array[s+1] = "R";count++;
+                        }
+                        else if (array[s].equals("G")){
+                            array[s+1] = "B";
+                            count++;
+                        }
+                    }
+                }
+            }
+            System.out.println(count);
+            for (int j = 0; j < w.length(); j++) {
+                System.out.print(array[j]);
+            }
+        }
+    }
+}
